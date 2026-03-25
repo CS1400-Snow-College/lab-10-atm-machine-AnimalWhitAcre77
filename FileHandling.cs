@@ -11,7 +11,7 @@ public static class FileHandling
         catch
         {
             File.Create(path);
-            text = File.ReadAllLines(path);
+            return []; // Don't run logic on an empty file
         }
 
         // Convert file text to tuple data

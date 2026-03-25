@@ -1,0 +1,15 @@
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\bin\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.exe
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\bin\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.deps.json
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\bin\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.runtimeconfig.json
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\bin\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.dll
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\bin\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.pdb
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.GeneratedMSBuildEditorConfig.editorconfig
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.AssemblyInfoInputs.cache
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.AssemblyInfo.cs
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.csproj.CoreCompileInputs.cache
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.sourcelink.json
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.dll
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\refint\lab-10-atm-machine-AnimalWhitAcre77.dll
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.pdb
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\lab-10-atm-machine-AnimalWhitAcre77.genruntimeconfig.cache
+H:\Programming\git-code-dir\lab-10-atm-machine-AnimalWhitAcre77\obj\Debug\net8.0\ref\lab-10-atm-machine-AnimalWhitAcre77.dll

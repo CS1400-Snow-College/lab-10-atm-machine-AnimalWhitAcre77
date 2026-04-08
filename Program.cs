@@ -12,6 +12,8 @@ void testProgram()
 
     // Read Files
     Debug.Assert(FileHandling.Read(accountsFilePath) != null);
+    
+    // REST OF TESTS USE THE ADDED DEBUG ACCOUNT
 
     // Write Files
     (string, int, decimal, List<string>) newAccount = ("TestName", 51423, (decimal)100.00, ["transaction1", "transaction2"]);
@@ -28,7 +30,18 @@ void testProgram()
     Debug.Assert(readAccount.Item3 == newAccount.Item3);
     Debug.Assert(Enumerable.SequenceEqual(readAccount.Item4, newAccount.Item4));
     accounts = accounts[..^1];
-    FileHandling.Write(accountsFilePath, accounts); // Remove the changes made
+
+    // Validate Pin
+    Debug.Assert(ValidatePin(11111, readAccount) == false);
+    Debug.Assert(ValidatePin(51423, readAccount) == true); // correct pin
+
+    // Withdraw
+    decimal currentBal = readAccount.Item3;
+
+    Debug.Assert(Withdraw((decimal)0.001, readAccount) == false);
+
+
+    FileHandling.Write(accountsFilePath, accounts); // Remove the debug account
 }
 
 Console.Clear();
@@ -36,6 +49,19 @@ Console.Clear();
 // Read the account data
 List<(string name, int pin, decimal balance, List<string> transactions)> accounts = FileHandling.Read("Accounts.txt");
 
-accounts[0].transactions.ForEach(Console.WriteLine);
-
 FileHandling.Write("Accounts.txt", accounts);
+
+bool ValidatePin(int pin, (string name, int pin, decimal balance, List<string> transactions) account)
+{
+    return pin == account.pin;
+}
+
+bool Withdraw(decimal request, (string name, int pin, decimal balance, List<string> transactions) account)
+{
+    // Make sure the transaction is possible
+    if (Math.Round(request, 2) != request) {return false;}; // No withdraw smaller than a penny
+    if (account.balance < request) {return false;} // Can't go into debt
+
+    // actual transaction goes here
+    return true;
+}

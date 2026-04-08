@@ -26,7 +26,9 @@ void testProgram()
 
         FileHandling.Write(accountsFilePath, accounts);
 
-        if (FileHandling.Read(accountsFilePath)[^1] == newAccount)
+        (string, int, decimal, List<string>) readAccount = FileHandling.Read(accountsFilePath)[^1];
+
+        if (readAccount == newAccount)
         {
             Console.WriteLine("Succeeded");
             accounts = accounts[..^1];
@@ -45,7 +47,3 @@ List<(string name, int pin, decimal balance, List<string> transactions)> account
 accounts[0].transactions.ForEach(Console.WriteLine);
 
 FileHandling.Write("Accounts.txt", accounts);
-
-
-
-

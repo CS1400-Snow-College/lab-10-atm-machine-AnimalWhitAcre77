@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HW #31 Stacks", "HW #31 Sta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queues", "..\C# Projects\Queues\Queues.csproj", "{3AC74087-7DE6-4A23-9547-EADC4BB40510}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW #32 Priority Queue", "..\C# Projects\HW #32 Priority Queue\HW #32 Priority Queue.csproj", "{4CAF3DFE-01AA-48E7-937E-17CA5EEE000B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW #33 Dictionary", "..\C# Projects\.vscode\HW #33 Dictionary\HW #33 Dictionary.csproj", "{97DAE555-5BE5-4742-A345-9B748374FA2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,14 @@ Global
 		{3AC74087-7DE6-4A23-9547-EADC4BB40510}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AC74087-7DE6-4A23-9547-EADC4BB40510}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AC74087-7DE6-4A23-9547-EADC4BB40510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CAF3DFE-01AA-48E7-937E-17CA5EEE000B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CAF3DFE-01AA-48E7-937E-17CA5EEE000B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CAF3DFE-01AA-48E7-937E-17CA5EEE000B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CAF3DFE-01AA-48E7-937E-17CA5EEE000B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97DAE555-5BE5-4742-A345-9B748374FA2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97DAE555-5BE5-4742-A345-9B748374FA2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97DAE555-5BE5-4742-A345-9B748374FA2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97DAE555-5BE5-4742-A345-9B748374FA2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

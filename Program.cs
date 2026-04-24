@@ -4,6 +4,8 @@ using System.Diagnostics;
 
 const string accountsFilePath = "Accounts.txt";
 
+ConsoleKeyInfo input;
+
 testProgram(); // Remove this once the code is finished 
 
 void testProgram()
@@ -69,7 +71,7 @@ int accountIndex = -1; // illegal starting value
 
 while (accountIndex < 0) // stay here until an account is selected
 {
-    ConsoleKeyInfo input = Console.ReadKey(true);
+    input = Console.ReadKey(true);
     if (input.KeyChar == '1') // Login
     {
         do
@@ -87,8 +89,6 @@ while (accountIndex < 0) // stay here until an account is selected
                 accountIndex = accounts.FindIndex(account => account.name == accountName); // No overlapping names
             }
             while (pin <= 0);
-
-            Console.WriteLine(!ValidatePin(pin, accounts[accountIndex]));
         }
         while (!ValidatePin(pin, accounts[accountIndex]));
     }
@@ -113,9 +113,56 @@ while (accountIndex < 0) // stay here until an account is selected
     } 
 }
 
+int inputNum;
+// Main Loop
+do
+{
+    Console.Clear();
+    Console.WriteLine($"Welcome, {accounts[accountIndex].name}");
+    Console.Write(@"
+    1. Check Balance
+    2. Withdraw
+    3. Deposit
+    4. Display last 5 transactions
+    5. Quick Withdraw $40
+    6. Quick Withdraw $100
+    Escape: Save changes and Leave program
+    
+    Enter a number to begin command: ");
+    input = Console.ReadKey();
+    Console.WriteLine();
+    
+    Int32.TryParse(input.KeyChar.ToString(), out inputNum);
+    switch (inputNum)
+    {
+        case 1: // Check Balance
+            Console.WriteLine("Selected: Check Balance");
+            Console.WriteLine($"You have a current balance of {accounts[accountIndex].balance:C}");
+            break;
+        case 2: // Withdraw
+            Console.WriteLine("Selected: Withdraw");
+            break;
+        case 3:
+            // code here
+            break;
+        case 4:
+            // code here
+            break;
+        case 5:
+            // code here
+            break;
+        case 6:
+            // code here
+            break;
+        default:
+            Console.WriteLine("Invalid Command Entered");
+            break;
+    }
 
-
-// Runtime loop
+    Console.Write("Press any key to continue: ");
+    Console.ReadKey(true);
+}
+while (input.Key != ConsoleKey.Escape);
 
 
 FileHandling.Write("Accounts.txt", accounts);

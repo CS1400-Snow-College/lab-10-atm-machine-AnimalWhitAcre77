@@ -1,2 +1,2 @@
 Ammon Whitaker,12345,0,
-NameThatIsCool,0,0,
+AccountWithCoolName,12345,0,

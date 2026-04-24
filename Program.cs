@@ -64,13 +64,13 @@ Console.WriteLine("Type 1 to log in, or type 2 to create a new account.");
 Console.WriteLine();
 
 string? accountName = "";
-int pin = -1; // illegal starting value
+int pin = 0; // illegal starting value
 int accountIndex = -1; // illegal starting value
 
 while (accountIndex < 0) // stay here until an account is selected
 {
     ConsoleKeyInfo input = Console.ReadKey(true);
-    if (input.KeyChar == '1')
+    if (input.KeyChar == '1') // Login
     {
         do
         {
@@ -86,11 +86,13 @@ while (accountIndex < 0) // stay here until an account is selected
 
                 accountIndex = accounts.FindIndex(account => account.name == accountName); // No overlapping names
             }
-            while (pin >= 0);
+            while (pin <= 0);
+
+            Console.WriteLine(!ValidatePin(pin, accounts[accountIndex]));
         }
-        while (ValidatePin(pin, accounts[accountIndex]));
+        while (!ValidatePin(pin, accounts[accountIndex]));
     }
-    else if (input.KeyChar == '2')
+    else if (input.KeyChar == '2') // New Account
     {
         Console.WriteLine("Create New Account");
 
@@ -100,9 +102,9 @@ while (accountIndex < 0) // stay here until an account is selected
             accountName = Console.ReadLine();
         }
 
-        while (pin < 0 || pin > 99999)
+        while (pin <= 0 || pin > 99999)
         {
-            Console.Write("Pin: ");
+            Console.Write("5 number Pin: ");
             Int32.TryParse(Console.ReadLine(), out pin);
         }
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lab-10-atm-machine-AnimalWhitAcre77")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+622b007bce0bf66ee20c1e3e4bb7c7a74af6a573")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04261ffaf16e9dd6499cd26cda13c5727d6c0dac")]
 [assembly: System.Reflection.AssemblyProductAttribute("lab-10-atm-machine-AnimalWhitAcre77")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lab-10-atm-machine-AnimalWhitAcre77")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

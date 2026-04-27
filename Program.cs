@@ -18,7 +18,7 @@ void testProgram()
     // REST OF TESTS USE THE ADDED DEBUG ACCOUNT
 
     // Write Files
-    (string, int, decimal, List<string>) newAccount = ("TestName", 51423, (decimal)100.00, ["transaction1", "transaction2"]);
+    (string, int, decimal, List<string>) newAccount = ("TestName", 51423, (decimal)100.00, new List<string> { "transaction1", "transaction2" });
     
     var accounts = FileHandling.Read(accountsFilePath);
     accounts.Add(newAccount);
@@ -31,7 +31,7 @@ void testProgram()
     Debug.Assert(readAccount.Item2 == newAccount.Item2);
     Debug.Assert(readAccount.Item3 == newAccount.Item3);
     Debug.Assert(Enumerable.SequenceEqual(readAccount.Item4, newAccount.Item4));
-    accounts = accounts[..^1];
+    accounts.RemoveAt(accounts.Count - 1);
 
     // Validate Pin
     Debug.Assert(ValidatePin(11111, readAccount) == false);
@@ -108,11 +108,12 @@ while (accountIndex < 0) // stay here until an account is selected
             Int32.TryParse(Console.ReadLine(), out pin);
         }
 
-        accounts.Add((accountName, pin, 0, []));
+        accounts.Add((accountName, pin, 0, new List<string>()));
         accountIndex = accounts.Count - 1;
     } 
 }
 
+var account = accounts[accountIndex];
 int inputNum;
 // Main Loop
 do
@@ -128,31 +129,59 @@ do
     6. Quick Withdraw $100
     Escape: Save changes and Leave program
     
-    Enter a number to begin command: ");
+    Type the corresponding number to begin a command: ");
     input = Console.ReadKey();
     Console.WriteLine();
+
+    if (input.Key == ConsoleKey.Escape) {break;}
     
     Int32.TryParse(input.KeyChar.ToString(), out inputNum);
     switch (inputNum)
     {
         case 1: // Check Balance
             Console.WriteLine("Selected: Check Balance");
-            Console.WriteLine($"You have a current balance of {accounts[accountIndex].balance:C}");
+            Console.WriteLine($"You have a current balance of {account.balance:C}");
             break;
         case 2: // Withdraw
             Console.WriteLine("Selected: Withdraw");
+
+            decimal withdraw = 0;
+            while (Math.Round(withdraw, 2) != withdraw || accounts[accountIndex].balance < withdraw || withdraw <= 0)
+            {
+                Console.Write("Amount to withdraw ($):");
+                Decimal.TryParse(Console.ReadLine().Replace("$",""), out withdraw);
+            }
+
+            Withdraw(withdraw, ref account);
+            Console.WriteLine($"Withdrew {withdraw:C} from your Account.");
             break;
-        case 3:
-            // code here
+        case 3: // Deposit
+            Console.WriteLine("Selected: Deposit");
+
+            decimal deposit = 0;
+            while (Math.Round(deposit, 2) != deposit || deposit <= 0)
+            {
+                Console.Write("Amount to Deposit ($):");
+                Decimal.TryParse(Console.ReadLine().Replace("$",""), out deposit);
+            }
+
+            Deposit(deposit, ref account);
+            Console.WriteLine($"Deposited {deposit:C} to your Account.");
             break;
-        case 4:
-            // code here
+        case 4: // View last 5 transactions
+            Console.WriteLine("Selected: Transactions");
+            Console.WriteLine("Last Five Transactions:");
+            account.transactions.ForEach(Console.WriteLine);
             break;
-        case 5:
-            // code here
+        case 5: // $40 quick withdraw
+            Console.WriteLine("Selected: $40 Quick Withdraw.");
+            if (account.balance >= 40) {Withdraw(40, ref account); Console.WriteLine("Withdrew $40.00");}
+            else {Console.WriteLine("Command Failed: Insufficient Funds");}
             break;
-        case 6:
-            // code here
+        case 6: // $100 quick withdraw
+            Console.WriteLine("Selected: $100 Quick Withdraw.");
+            if (account.balance >= 100) {Withdraw(100, ref account); Console.WriteLine("Withdrew $100.00");}
+            else {Console.WriteLine("Command Failed: Insufficient Funds");}
             break;
         default:
             Console.WriteLine("Invalid Command Entered");
@@ -163,6 +192,8 @@ do
     Console.ReadKey(true);
 }
 while (input.Key != ConsoleKey.Escape);
+
+accounts[accountIndex] = account; // Update list with the changes made
 
 
 FileHandling.Write("Accounts.txt", accounts);
@@ -177,11 +208,11 @@ bool Withdraw(decimal request, ref (string name, int pin, decimal balance, List<
     // Make sure the transaction is possible
     if (Math.Round(request, 2) != request) {return false;}; // No withdraw smaller than a penny
     if (account.balance < request) {return false;} // Can't go into debt
-    if (request < 0) {return false;} // Can't go into debt
+    if (request <= 0) {return false;} // Can't go into debt
 
     // actual transaction goes here
     account.balance -= request;
-    account.transactions.Add($"{DateTime.Now} --- Withdrew ${request:F2}");
+    account.transactions.Add($"{DateTime.Now} --- Withdrew {request:C}");
     return true;
 }
 
@@ -193,6 +224,6 @@ bool Deposit(decimal request, ref (string name, int pin, decimal balance, List<s
 
     // actual transaction goes here
     account.balance += request;
-    account.transactions.Add($"{DateTime.Now} --- Deposited ${request:F2}");
+    account.transactions.Add($"{DateTime.Now} --- Deposited {request:C}");
     return true;
 }

@@ -25,7 +25,7 @@ public static class FileHandling
 
             decimal balance = Convert.ToDecimal(account[2]);
 
-            List<string> transactions = [.. account[3].Split(':')];
+            List<string> transactions = [.. account[3].Split('!')];
             
             accounts.Add((name, pin, balance, transactions));
         }
@@ -40,7 +40,7 @@ public static class FileHandling
 
         foreach ((string name, int pin, decimal balance, List<string> transactions) account in accounts)
         {
-            text.Add($"{account.name},{account.pin},{account.balance},{string.Join(":", account.transactions)}");
+            text.Add($"{account.name},{account.pin},{account.balance},{string.Join("!", account.transactions)}");
         }
         File.WriteAllLines(path, text);
     }
